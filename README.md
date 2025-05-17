@@ -10,7 +10,6 @@ You will be in charge of setting up an initial demo version of the application f
 
 ## Requirements
 
-
 1. Clone this repo
 ```bash
 $ git clone https://github.com/IT-Academy-BCN/starter-code-frontend-shop
