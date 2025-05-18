@@ -1,5 +1,5 @@
 // If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
-var products = [
+const products = [
     {
         id: 1,
         name: 'cooking oil',
@@ -70,14 +70,21 @@ var products = [
 // ** Don't hesitate to seek help from your peers or your mentor if you still struggle with debugging.
 
 // Improved version of cartList. Cart is an array of products (objects), but each one has a quantity field to define its quantity, so these products are not repeated.
-var cart = [];
+const cart = [];
 
 var total = 0;
 
 // Exercise 1
-function buy(id) {
+function buy(productId) {
     // 1. Loop for to the array products to get the item to add to cart
+    const product = products.find(item => item.id === productId);
+    const itemInCart = cart.find(item => item.id === productId);
     // 2. Add found product to the cart array
+    if(!itemInCart) {
+       cart.push({...product, quantity: 1});
+    } else {
+        itemInCart.quantity++;
+    } 
 }
 
 // Exercise 2
