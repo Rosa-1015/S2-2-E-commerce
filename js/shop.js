@@ -80,16 +80,16 @@ function buy(productId) {
     const product = products.find(item => item.id === productId);
     const itemInCart = cart.find(item => item.id === productId);
     // 2. Add found product to the cart array
-    if(!itemInCart) {
-       cart.push({...product, quantity: 1});
+    if (!itemInCart) {
+        cart.push({ ...product, quantity: 1 });
     } else {
         itemInCart.quantity++;
-    } 
+    }
 }
 
 // Exercise 2
 function cleanCart() {
-    cart=[];
+    cart = [];
 }
 
 // Exercise 3
@@ -99,8 +99,20 @@ function calculateTotal() {
 }
 
 // Exercise 4
-function applyPromotionsCart() {
+function applyPromotionsCart(cart) {
     // Apply promotions to each item in the array "cart"
+    cart.forEach((element) => {
+        if (element.offer) {
+            const quantity = element.quantity;
+            const minQuantity = element.offer.number;
+            const discount = element.offer.percent / 100;
+            const totalWithoutDiscount = element.quantity * element.price;
+
+            if (quantity >= minQuantity) {
+                element.totalWithDiscount = totalWithoutDiscount * (1 - discount);
+            }
+        }
+    });
 }
 
 // Exercise 5
