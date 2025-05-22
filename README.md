@@ -1,65 +1,139 @@
-# Sprint 2 IT Academy | Shop
+# 🛒 Sprint 2-2 E-commerce Shopping Cart Demo
 
-## Introduction
+## 📄 Description
 
-A company in the e-commerce sector has asked us for a web application that allows them to offer the purchase of their products through the internet.
+Front-end demo for an e-commerce company, built during the ITACADEMY Front-End Bootcamp.
 
-You will be in charge of setting up an initial demo version of the application for the client: management of the shopping cart and the application of the promotions on the final price. You have 1 week to finish this part of sprint (2.2).
+This project implements a basic shopping cart experience using **vanilla JavaScript**:
+
+* Add/remove items
+* Apply promotions and discounts
+* Validate checkout form
+
+📌 **No back-end**: all product data is hardcoded.
+
+🗂️ Each feature is developed in its own branch: `level-1/exercise-#`.
 
 <br>
 
-## Requirements
+## ⚙️ Requirements
 
-1. Clone this repo
-```bash
-$ git clone https://github.com/IT-Academy-BCN/starter-code-frontend-shop
-```
-
-2. Unlink your repo from the itacademy repository.
-(Explanation: You have to upload the code to your GitHub repository, not to the IT Academy. That's why you have to unlink your project from IT Academy GitHub with the following command)
-
-```bash
-$ git remote rm origin
-```
-
-3. Link your repo to the repository you have to create in your github account
-(Explanation: Now your project is not linked to any remote repository. In order to upload your code, you have to link your project to the new repository created on github.com using the following command)
+1. **Clona este repositorio:**
 
 ```bash
-$ git remote add origin <your repo name!>
+git clone https://github.com/IT-Academy-BCN/starter-code-frontend-shop
+```
+
+2. **Desvincula el repositorio original (IT Academy):**
+
+```bash
+git remote rm origin
+```
+
+3. **Vincula tu repositorio en GitHub:**
+
+```bash
+git remote add origin <URL de tu nuevo repositorio>
 ```
 
 <br>
 
-## Submission
+## 🛠️ Technologies Used
 
-1. It is necessary to upload each exercise in a separate commit. The commit name must clearly indicate its content.
-
-2. Upload the link to your GitHub repository to the virtual campus, enabling your mentor to review and provide feedback.
-
-
+* HTML, CSS (**Bootstrap** for some styling)
+* **Vanilla JavaScript**
+* **RegEx** for form validation
 
 <br>
 
-## Introduction
+## 📁 Project Structure
 
-The statement of the exercise is available on the virtual campus.
+```
+starter-code-frontend-shop/
+├── css/
+│   └── styles.css            # Main stylesheet
+├── images/                   # Product and UI images
+├── js/
+│   ├── checkout.js           # Checkout logic and validation
+│   └── shop.js               # Product listing and cart logic
+├── .gitignore                # Git ignored files config
+├── checkout.html            # Checkout page
+├── index.html               # Main shop interface
+└── README.md                # Project documentation
+```
 
 <br>
 
+## 🧩 Exercises Overview
 
-## Instructions
+### Exercise 1: Add Products to Cart
 
-You have the following indications from the frontend manager:
+* Implemented `buy()` function to add products to the cart.
+* Used an object-based approach with a `getSubtotal()` method.
+* Products track their own quantity and subtotal.
+* If a product exists, its quantity is incremented and discount recalculated.
 
-- You have prepared the base of the project on which you will work: https://github.com/IT-Academy-BCN/starter-code-frontend-shop
+### Exercise 2: Clean Cart
 
-- The base of the project on which you will work has already created all the files, and an initial version of the interface, so you can focus on programming the logic.
+* Created a reusable `updateHTML()` function to avoid repetitive DOM updates.
+* `cleanCart()` resets the cart and clears the UI.
+  
+  **Design decision:**
+  Used `cart.length = 0` to preserve array reference.
+  Refactored `removeHTML()` into `updateHTML()` to follow DRY principles.
 
-- As at the moment we don't consume data from a server using an API, we will work with hardcoded data in the application. For the moment we will implement the logic using a small group of 9 products divided in 3 sections.
+### Exercise 3: Calculate Cart Total
 
-- Except for the last level, showing the result of the functions by console is enough.
+* Implemented `calculateTotal()` to sum product subtotals.
+* Used the nullish coalescing operator (`??`) to choose between discounted and regular subtotal.
 
-- The logic to implement will be placed in the src/grocery.js and src/checkout.js files. You will see that the built in functions have already been created for you to implement them.
+### Exercise 4: Apply Promotions
 
-- It is forbidden to copy the code, since this way you don't learn anything. Furthermore, as you can see, the second release of sprint 5 is a mini-level test with the mentor, in which you will have to demonstrate live that you have acquired the javascript concepts. Don't worry, if you work on the releases you won't have any problems.
+* Applied two discount rules:
+
+  * Buy 3+ cooking oils → 20% off
+  * Buy 10+ cupcake mixtures → 30% off
+* Discounts saved in a new `subTotalWithDiscount` property.
+* `calculateDiscount()` is called when quantities change.
+
+### Exercise 5: Display the Cart in Modal
+
+* Used `createElement()` for safe and structured DOM manipulation.
+* Split logic into:
+
+  * `createCartRow()` → builds rows
+  * `addProductToCart()` → appends to modal
+  * `updateProductInCart()` → updates values
+    
+    **Design decision:**
+    Chose verbosity for better maintainability and control over dynamic content.
+
+### Exercise 6: Checkout Form Validation
+
+* Added real-time validation with `onchange` events.
+* Used RegEx to validate:
+
+  * Name/surname (letters only)
+  * Phone (9 digits)
+  * Email format
+  * Passwords (must include letters and numbers)
+    
+    **Design decision:**
+    Used inline validation to enhance UX and practice RegEx handling.
+
+<br>
+
+# 🔑 Key Learnings
+
+- Manipulate the DOM using `createElement` for structured rendering.
+- Manage product state with methods and custom properties.
+- Create reusable utilities to avoid redundancy.
+- Implement form validation using JavaScript and RegEx.
+- Use branches and Pull Requests to merge code.
+
+<br>
+
+# 🚀 Future Improvements
+
+- Complete level 2 & 3 of the sprint.
+
