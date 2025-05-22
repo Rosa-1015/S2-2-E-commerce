@@ -1,4 +1,4 @@
-// Exercise 6
+// Exercise6
 function validate() {
 	let error = 0;
 
