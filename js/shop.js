@@ -89,7 +89,8 @@ function buy(productId) {
 
 // Exercise 2
 function cleanCart() {
-    cart = [];
+    cart.length = 0;
+    printCart();
 }
 
 // Exercise 3
